@@ -1,25 +1,42 @@
 <template>
     <div class="contact">
-      <div class="contact-border">
-        <div class="contact-first">
+      <transition name="move">
+        <div class="menu" v-show="show">
+          <div class="contact-border">
+            <div class="contact-first">
           <p class="contact-first-1">联系我们</p>
           <p><img src="../images/line.png" /></p>
         </div>
-        <div class="contact-sec">
+            <div class="contact-sec">
           <p class="contact-sec-1">告诉我们您想要的吧</p>
           <div class="contact-sec-2"><span><img src="../images/phone.png" /></span> 020-00000000</div>
         </div>
-        <div class="contact-thir">
+            <div class="contact-thir">
           <p>&copy;2018-版权所有</p>
           <p>手机版|本站使用凡科建站 搭建|管理登录</p>
         </div>
-      </div>
+          </div>
+        </div>
+      </transition>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Contact"
+        name: "Contact",
+      data() {
+        return {
+          show: false
+        };
+      },
+      mounted:function () {
+        this.showMenu()
+      },
+      methods: {
+        showMenu() {
+          this.show = !this.show;
+        }
+      },
     }
 </script>
 
@@ -68,4 +85,43 @@
   .contact-thir p{
     margin-top: 5px;
   }
+.menu{
+  display: inline-block;
+  transition:all 0.7s linear;
+}
+/*上面主要都是样式代码*/
+.move-enter-active > .contact-border{
+  animation: animation  2s ease-in;
+}
+
+@keyframes animation {
+  0%{transform: rotateY(0deg)}
+  25%{
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+  }
+  50%{
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);}
+  75%{
+    -webkit-transform: rotateY(270deg);
+    -moz-transform: rotateY(270deg);
+    -ms-transform: rotateY(270deg);
+    -o-transform: rotateY(270deg);
+    transform: rotateY(270deg);
+  }
+  100%{
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    -ms-transform: rotateY(360deg);
+    -o-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
 </style>

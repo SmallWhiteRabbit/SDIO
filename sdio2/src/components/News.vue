@@ -5,35 +5,38 @@
           <p>新闻动态</p>
           <p class="new-tittle-cha">NEWS</p>
         </div>
-        <div class="new-cont">
+        <transition name="move">
+          <div class="menu" v-show="show">
+            <div class="new-cont">
           <div class="new-cont-date"><span class="new-cont-day">24</span><span class="new-cont-year">2018/05</span></div>
           <div class="new-cont-cont">
             <p class="new-cont-cont-tittle">美国研究人员发现树叶也可做电池</p>
             <span class="new-cont-cont-intro">树叶也能做电池？对，你没有看错。美国马里兰大学的研究人员用树叶和一</span>
           </div>
         </div>
-        <div class="new-cont">
+            <div class="new-cont">
           <div class="new-cont-date"><span class="new-cont-day">24</span><span  class="new-cont-year">2018/05</span></div>
           <div class="new-cont-cont">
             <p>智能家具互联、互通 尚需五年</p>
             <span>物联网时代是如此诱人，作为物联网时代的最重要的组成部分之一，智能家居的</span>
           </div>
         </div>
-        <div class="new-cont">
+            <div class="new-cont">
           <div class="new-cont-date"><span class="new-cont-day">24</span><span  class="new-cont-year">2018/05</span></div>
           <div class="new-cont-cont">
             <p>冬季用电紧张 当空调遭遇电压不稳咋办？</p>
             <span>在冬季用电高峰期，电压不稳的情况可能会在一定的情况下出现，这时候，就是得</span>
           </div>
         </div>
-        <div class="new-cont">
+            <div class="new-cont">
           <div class="new-cont-date"><span class="new-cont-day">24</span><span  class="new-cont-year">2018/05</span></div>
           <div class="new-cont-cont">
             <p >CPU烧到宕机 散热器这么使用你就傻了</p>
             <span>不少DIY玩家在攒机时对硬件的选额慎而又慎，让不同硬件的搭配可以发挥</span>
           </div>
         </div>
-
+          </div>
+        </transition>
       </div>
 
     </div>
@@ -41,7 +44,20 @@
 
 <script>
     export default {
-        name: "News"
+        name: "News",
+      data() {
+        return {
+          show: false
+        };
+      },
+      mounted:function () {
+        this.showMenu()
+      },
+      methods: {
+        showMenu() {
+          this.show = !this.show;
+        }
+      },
     }
 </script>
 
@@ -120,4 +136,33 @@
     position: relative;
     top: 10px;
   }
+
+.menu{
+  display: inline-block;
+  transition:all 0.7s linear;
+}
+/*上面主要都是样式代码*/
+.move-enter-active > .new-cont{
+  animation: animation  2s ease-in-out;
+}
+
+@keyframes animation {
+  0%{transform: scale(0) }
+  50%{-webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5) ;
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5) ;
+    transform: scale(0.5) }
+  75%{-webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75) ;
+    -ms-transform: scale(0.75) ;
+    -o-transform: scale(0.75) ;
+    transform: scale(0.75) ;}
+  100%{
+    -webkit-transform: scale(1) ;
+    -moz-transform: scale(1) ;
+    -ms-transform: scale(1) ;
+    -o-transform: scale(1) ;
+    transform: scale(1) ;}
+}
 </style>

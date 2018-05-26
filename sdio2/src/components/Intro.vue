@@ -1,17 +1,23 @@
 <template>
   <div class="intro">
     <div class="intro-border">
-      <div class="safe intro-cont">
-        <div class="intro-pos">
-          <p><img src="../images/safe.png" /></p>
-          <p class="intro-tittle">安全高品质</p>
-          <p>12年坚持捍卫民族电工精工品质</p>
-          <p>千万次重复，品质始终如一</p>
-          <p>从 模具到材料加工，从不见到成品组装</p>
-          <p>176道工序，68个质控点</p>
+      <transition name="move">
+        <div class="menu" v-show="show">
+          <div class="safe intro-cont">
+            <div class="intro-pos">
+              <p><img src="../images/safe.png" /></p>
+              <p class="intro-tittle">安全高品质</p>
+              <p>12年坚持捍卫民族电工精工品质</p>
+              <p>千万次重复，品质始终如一</p>
+              <p>从 模具到材料加工，从不见到成品组装</p>
+              <p>176道工序，68个质控点</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="major intro-cont">
+      </transition>
+      <transition name="move">
+        <div class="menu" v-show="show">
+          <div class="major intro-cont">
         <div class="intro-pos">
           <p><img src="../images/major.png" /></p>
           <p class="intro-tittle">专业设计团队</p>
@@ -21,8 +27,12 @@
           <p>因为您的选择让我们更有动力</p>
         </div>
       </div>
-      <div class="sale intro-cont">
-        <div class="intro-pos">
+        </div>
+      </transition>
+      <transition name="move">
+        <div class="menu" v-show="show">
+          <div class="sale intro-cont">
+            <div class="intro-pos">
           <p><img src="../images/sale.png" /></p>
           <p class="intro-tittle">贴心售后</p>
           <p>专业贴心的售后团队，让你售后无忧</p>
@@ -30,7 +40,9 @@
           <p>悉心为您的打造休闲现代生活</p>
           <p>贴心服务，强大的售后团队支持</p>
         </div>
-      </div>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 
@@ -38,7 +50,20 @@
 
 <script>
     export default {
-        name: "Intro"
+        name: "Intro",
+      data() {
+        return {
+          show: false
+        };
+      },
+      mounted:function () {
+        this.showMenu()
+      },
+      methods: {
+        showMenu() {
+          this.show = !this.show;
+        }
+      }
     }
 </script>
 
@@ -48,7 +73,6 @@
   height: 695px;
   position: absolute;
   top: 620px;
-
 }
 
 .intro-border{
@@ -95,6 +119,30 @@
   margin-top: 20px;
   margin-bottom: 40px;
 }
+.menu{display: inline-block;
+  transition:all 0.7s linear;}
+.move-enter-active > .intro-cont{
+  animation: animation  2s ease-in-out;
+}
 
+@keyframes animation {
+  0%{transform: scale(0) rotate(0deg)}
+  50%{-webkit-transform: scale(0.5) rotate(180deg);
+    -moz-transform: scale(0.5) rotate(180deg);
+    -ms-transform: scale(0.5) rotate(180deg);
+    -o-transform: scale(0.5) rotate(180deg);
+    transform: scale(0.5) rotate(180deg);}
+  75%{-webkit-transform: scale(0.75) rotate(270deg);
+    -moz-transform: scale(0.75) rotate(270deg);
+    -ms-transform: scale(0.75) rotate(270deg);
+    -o-transform: scale(0.75) rotate(270deg);
+    transform: scale(0.75) rotate(270deg);}
+  100%{
+    -webkit-transform: scale(1) rotate(360deg);
+    -moz-transform: scale(1) rotate(360deg);
+    -ms-transform: scale(1) rotate(360deg);
+    -o-transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(360deg);}
+}
 
 </style>
