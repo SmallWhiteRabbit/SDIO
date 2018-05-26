@@ -4,9 +4,9 @@
         <div class="menu" v-show="show">
           <div class="picture-pos">
             <div class="picture-block">
-          <span class="picture-show"><img src="../images/pic1-1.png"/></span>
-          <span class="picture-hid"><img src="../images/pic1-2.jpg"/></span>
-        </div>
+              <span class="picture-show"><img src="../images/pic1-1.png"/></span>
+              <span class="picture-hid"><img src="../images/pic1-2.jpg"/></span>
+            </div>
             <div class="picture-block">
           <span class="picture-show"><img src="../images/pic2-2.jpg" /></span>
           <span  class="picture-hid"><img src="../images/pic2-1.jpg" /></span>
@@ -82,7 +82,8 @@
   display: none;
 }
 .menu{
-  display: inline-block;
+  display: inline-block;   width: 1210px;
+  margin: 0 auto;    position: relative;top: 13%;
   transition:all 0.7s linear;
 }
 /*上面主要都是样式代码*/
