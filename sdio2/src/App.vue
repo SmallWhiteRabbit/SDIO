@@ -40,17 +40,15 @@ export default {
     handleScroll:function () {
       var scrollTop = window.pageYOffset || window.documentElement.scrollTop || document.body.scrollTop;
       console.log(scrollTop)
-      if(scrollTop <= 500){
-        console.log()
-      } else if(scrollTop > 500 && scrollTop < 1100){
+     if(scrollTop > 300 && scrollTop < 900){
         this.showIntro = true
-        // console.log(this.showIntro)
-      }else  if(scrollTop > 1100 && scrollTop < 2093){
+      }else  if(scrollTop > 900 && scrollTop < 1600){
         this.showPic = true
-      } else  if(scrollTop > 2093 && scrollTop < 2660){
+      } else  if(scrollTop > 1600 && scrollTop < 2000){
         this.showNews = true
-        this.showCont = true
-      }
+      }else if(scrollTop >2000){
+       this.showCont = true
+     }
     }
   }
 }
