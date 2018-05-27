@@ -1,7 +1,7 @@
 <template>
     <div class="picture-back">
       <transition name="move">
-        <div class="menu" v-show="show">
+        <div class="menu" v-show="msg">
           <div class="picture-pos">
             <div class="picture-block">
               <span class="picture-show"><img src="../images/pic1-1.png"/></span>
@@ -41,13 +41,8 @@
           show: false
         };
       },
-      mounted:function () {
-        this.showMenu()
-      },
-      methods: {
-        showMenu() {
-          this.show = !this.show;
-        }
+      props:{
+          msg:Boolean
       },
     }
 </script>

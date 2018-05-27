@@ -1,12 +1,16 @@
 <template>
     <div class="news">
       <div class="new-border">
-        <div class="new-tittle">
-          <p>新闻动态</p>
-          <p class="new-tittle-cha">NEWS</p>
-        </div>
         <transition name="move">
-          <div class="menu" v-show="show">
+          <div class="menu" v-show="msg">
+            <div class="new-tittle">
+              <p>新闻动态</p>
+              <p class="new-tittle-cha">NEWS</p>
+            </div>
+          </div>
+        </transition>
+        <transition name="move">
+          <div class="menu" v-show="msg">
             <div class="new-cont">
           <div class="new-cont-date"><span class="new-cont-day">24</span><span class="new-cont-year">2018/05</span></div>
           <div class="new-cont-cont">
@@ -50,14 +54,9 @@
           show: false
         };
       },
-      mounted:function () {
-        this.showMenu()
-      },
-      methods: {
-        showMenu() {
-          this.show = !this.show;
-        }
-      },
+      props:{
+        msg:Boolean
+      }
     }
 </script>
 
@@ -142,7 +141,7 @@
   transition:all 0.7s linear;
 }
 /*上面主要都是样式代码*/
-.move-enter-active > .new-cont{
+.move-enter-active > .new-cont,.new-tittle{
   animation: animation  2s ease-in-out;
 }
 

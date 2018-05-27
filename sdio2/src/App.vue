@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <Head/>
-    <Intro v-show="showIntro"></Intro><Picture v-show="showPic"/><News v-show="showNews"/><Contact v-show="showCont"/>
-    <Intro v-if="flag==2"/>
-    <Picture v-if="flag==3"/>
-    <News v-if="flag==4"/>
-    <Contact v-if="flag==4"/>
+    <Intro :msg="showIntro" ></Intro>
+    <Picture :msg="showPic" />
+    <News :msg="showNews"/>
+    <Contact :msg="showCont" />
   </div>
 </template>
 
@@ -20,11 +19,10 @@ export default {
   name: 'App',
   data(){
     return{
-      flag : 0,
-      showIntro : true,
-      showPic : true,
-      showNews : true,
-      showCont : true
+      showIntro : false,
+      showPic : false,
+      showNews : false,
+      showCont : false
     }
   },
   components: {
@@ -34,34 +32,24 @@ export default {
     News,
     Contact
   },
-  mounted(){
+  created(){
     window.addEventListener('scroll',this.handleScroll)
+    // this.handleScroll()
   },
   methods:{
     handleScroll:function () {
       var scrollTop = window.pageYOffset || window.documentElement.scrollTop || document.body.scrollTop;
       console.log(scrollTop)
-      if(scrollTop <= 620){
-        console.log(this.flag)
-      } else if(scrollTop > 620 && scrollTop < 1315){
-        this.flag=2
-        this.showIntro = false
-        this.showPic = true
-        this.showNews = true
-        this.showCont = true
-        console.log(this.flag)
-      }else  if(scrollTop > 1315 && scrollTop < 2093){
-        this.flag=3
+      if(scrollTop <= 500){
+        console.log()
+      } else if(scrollTop > 500 && scrollTop < 1100){
         this.showIntro = true
-        this.showPic = false
-        this.showNews = true
-        this.showCont = true
+        // console.log(this.showIntro)
+      }else  if(scrollTop > 1100 && scrollTop < 2093){
+        this.showPic = true
       } else  if(scrollTop > 2093 && scrollTop < 2660){
-        this.flag=4
-        this.showIntro = true
-        this.showPic = true
-        this.showNews = false
-        this.showCont = false
+        this.showNews = true
+        this.showCont = true
       }
     }
   }

@@ -1,8 +1,8 @@
 <template>
   <div class="intro">
-    <div class="intro-border">
+    <div class="intro-border"  >
       <transition name="move">
-        <div class="menu" v-show="show">
+        <div class="menu" v-show="msg">
           <div class="safe intro-cont">
             <div class="intro-pos">
               <p><img src="../images/safe.png" /></p>
@@ -16,7 +16,7 @@
         </div>
       </transition>
       <transition name="move">
-        <div class="menu" v-show="show">
+        <div class="menu" v-show="msg">
           <div class="major intro-cont">
         <div class="intro-pos">
           <p><img src="../images/major.png" /></p>
@@ -30,7 +30,7 @@
         </div>
       </transition>
       <transition name="move">
-        <div class="menu" v-show="show">
+        <div class="menu" v-show="msg">
           <div class="sale intro-cont">
             <div class="intro-pos">
           <p><img src="../images/sale.png" /></p>
@@ -53,17 +53,13 @@
         name: "Intro",
       data() {
         return {
-          show: false
+          show: false,
         };
       },
-      mounted:function () {
-        this.showMenu()
-      },
-      methods: {
-        showMenu() {
-          this.show = !this.show;
-        }
+      props:{
+          msg:Boolean
       }
+
     }
 </script>
 

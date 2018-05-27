@@ -1,7 +1,7 @@
 <template>
     <div class="contact">
       <transition name="move">
-        <div class="menu" v-show="show">
+        <div class="menu" v-show="msg">
           <div class="contact-border">
             <div class="contact-first">
           <p class="contact-first-1">联系我们</p>
@@ -29,13 +29,8 @@
           show: false
         };
       },
-      mounted:function () {
-        this.showMenu()
-      },
-      methods: {
-        showMenu() {
-          this.show = !this.show;
-        }
+      props:{
+        msg:Boolean
       },
     }
 </script>
